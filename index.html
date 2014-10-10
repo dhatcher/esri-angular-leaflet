@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Esri Angular Map</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body ng-app="mapApp" ng-controller="AppController">
+
+    <div class="wrapper">
+        <!--Main Banner-->
+        <div class="row bg-primary header">
+            <div class="col-md-4 col-md-offset-1" style="display: inline-block; vertical-align: bottom; float: none;">
+                <h2>Esri AngularJS Maps</h2>
+                <h4>Combining AngularJS with the Esri Leaflet API</h4>
+            </div>
+            <div class="col-md-2 col-md-offset-4" style="display: inline-block; vertical-align: bottom; float: none; padding-bottom: 5px;">
+                <input type="text" class="text-success" placeholder="Recreation Where" ng-model="recreationalWhereClause">
+                <select ng-model="selectedBaseMapLayer" ng-options="layer.name for layer in baseMapLayers" class="btn btn-default btn-lg dropdown-toggle"></select>
+            </div>
+        </div>
+
+
+        <!--Esri Map Area-->
+        <esri-map map-center="[37.78, -92.85]" zoom-level="4" show-layer-control="true" layer-control-position="topleft">
+            <esri-basemap-layer layer-name="{{selectedBaseMapLayer.name}}"></esri-basemap-layer>
+            <esri-tiledmap-layer url="http://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer" opacity="0.5" name="Navigation"></esri-tiledmap-layer>
+            <esri-dynamic-layer url="http://maps1.arcgisonline.com/ArcGIS/rest/services/USA_Federal_Lands/MapServer" opacity="0.6" layer-defs="{1:&quot;STATE='CA'&quot;, 2:&quot;STATE='CA'&quot;}"></esri-dynamic-layer>
+            <esri-feature-layer url="http://sampleserver6.arcgisonline.com/arcgis/rest/services/RedlandsEmergencyVehicles/FeatureServer/0"
+                    feature-icon="{ iconUrl: 'img/ambulance-28.png',
+                                iconRetinaUrl: 'img/ambulance-28.png',
+                                iconSize: [28, 28],
+                                iconAnchor: [13.5, 17.5],
+                                popupAnchor: [0, -11]
+                                }"
+                    popup-template="<p><span style='font-weight: bold'>{unitname}</span><br>Call# {callnumber}<br>Speed: {speed}mph</p>"
+                    where="speed > 24"></esri-feature-layer>
+            <esri-feature-layer url="http://sampleserver6.arcgisonline.com/arcgis/rest/services/Recreation/FeatureServer/0" name="Recreational Facilities"
+                                where="{{recreationalWhereClause}}"
+                                popup-template="<p><span style='font-weight: bold'>Facility {facility}</span><br>Quality: {quality}<br> Description: {description}</p>"></esri-feature-layer>
+            <esri-cluster-layer url="http://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Trimet_Transit_Stops/FeatureServer/0"></esri-cluster-layer>
+            <esri-geocoder position="topright"></esri-geocoder>
+        </esri-map>
+
+        <div class="row footer bg-primary">Esri AngularJS Maps uses Leaflet and the leaflet-directive</div>
+    </div>
+    <!--External JavaScript-->
+    <script src="libs/jquery-1.11.1.min.js"></script>
+    <script src="libs/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <script src="libs/angular.js"></script>
+    <script src="libs/leaflet.js"></script>
+    <script src="libs/esri-leaflet.js"></script>
+    <script src="libs/angular-leaflet-directive.min.js"></script>
+    <script src="libs/esri-leaflet-geocoder.js"></script>
+
+    <!-- Leaflet.markercluster for use with esri leaflet clustered feature layer -->
+    <script src="libs/leaflet-markercluster/leaflet.markercluster-src.js"></script>
+
+    <!-- esri leaflet clustered feature layer -->
+    <script src="libs/esri-leaflet-clustered-feature-layer-src.js"></script>
+
+    <!--Application Level JavaScript-->
+    <script src="app.js"></script>
+    <script src="app-controller.js"></script>
+
+    <!--Map Module JavaScript-->
+    <script src="components/map/map-controller.js"></script>
+    <script src="components/map/map-directive.js"></script>
+    <script src="components/basemapLayer/basemap-layer-directive.js"></script>
+    <script src="components/tiledMapLayer/tiled-map-layer-directive.js"></script>
+    <script src="components/dynamicMapLayer/dynamic-map-layer-directive.js"></script>
+    <script src="components/featureLayer/feature-layer-directive.js"></script>
+    <script src="components/clusterLayer/esri-cluster-layer-directive.js"></script>
+    <script src="components/geocoder/geocoder-directive.js"></script>
+</body>
+</html>

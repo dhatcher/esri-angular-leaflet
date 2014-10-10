@@ -1,0 +1,31 @@
+@import url("libs/bootstrap-3.1.1-dist/css/bootstrap.min.css");
+@import url("libs/leaflet.css");
+@import url("libs/esri-leaflet-geocoder.css");
+/* Marker Cluster css */
+@import url("libs/leaflet-markercluster/MarkerCluster.Default.css");
+@import url("libs/leaflet-markercluster/MarkerCluster.css");
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: table-row;
+}
+
+.content {
+    display: table-row;  /* height is dynamic, and will expand... */
+    height: 100%;        /* ...as content is added (won't scroll) */
+}
+
+.footer {
+    display: table-row;
+}
