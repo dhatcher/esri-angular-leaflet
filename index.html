@@ -15,7 +15,7 @@
                 <h4>Combining AngularJS with the Esri Leaflet API</h4>
             </div>
             <div class="col-md-2 col-md-offset-4" style="display: inline-block; vertical-align: bottom; float: none; padding-bottom: 5px;">
-                <input type="text" class="text-success" placeholder="Recreation Where" ng-model="recreationalWhereClause">
+                <label style="padding-right: 3px;" for="whereInput">Where </label><input id="whereInput" type="text" class="text-success" placeholder="Recreation Where" ng-model="recreationalWhereClause">
                 <select ng-model="selectedBaseMapLayer" ng-options="layer.name for layer in baseMapLayers" class="btn btn-default btn-lg dropdown-toggle"></select>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <!--Esri Map Area-->
         <esri-map map-center="[37.78, -92.85]" zoom-level="4" show-layer-control="true" layer-control-position="topleft">
             <esri-basemap-layer layer-name="{{selectedBaseMapLayer.name}}"></esri-basemap-layer>
-            <esri-tiledmap-layer url="http://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer" opacity="0.5" name="Navigation"></esri-tiledmap-layer>
+            <esri-tiledmap-layer url="http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Household_Income/MapServer" opacity="0.4" name="Income"></esri-tiledmap-layer>
             <esri-dynamic-layer url="http://maps1.arcgisonline.com/ArcGIS/rest/services/USA_Federal_Lands/MapServer" opacity="0.6" layer-defs="{1:&quot;STATE='CA'&quot;, 2:&quot;STATE='CA'&quot;}"></esri-dynamic-layer>
             <esri-feature-layer url="http://sampleserver6.arcgisonline.com/arcgis/rest/services/RedlandsEmergencyVehicles/FeatureServer/0"
                     feature-icon="{ iconUrl: 'img/ambulance-28.png',
