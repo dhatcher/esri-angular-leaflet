@@ -1,0 +1,35 @@
+{
+  "name": "esri_angular_leaflet",
+  "description": "An AngularJS module that wraps the esri leaflet api and allows for simple web map creation.",
+  "version": "0.1.0",
+  "keywords": [
+    "esri",
+    "angular",
+    "leaflet"
+  ],
+  "homepage": "https://github.com/dhatcher/esri-angular-leaflet",
+  "author": "Danny Hatcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhatcher/esri-angular-leaflet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dhatcher/esri-angular-leaflet/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/dhatcher/esri-angular-leaflet"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-banner": "~0.2.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-uglify": "~0.3.0",
+    "load-grunt-tasks": "~0.3.0",
+    "markdown": "~0.5.0"
+  }
+}
